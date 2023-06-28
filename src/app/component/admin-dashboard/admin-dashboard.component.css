@@ -1,0 +1,20 @@
+.navbar {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  .sidebar {
+    width: 180px; /* Adjust the width as needed */
+    min-height: 100vh; /* Extend the height to match the viewport */
+    padding: 20px; /* Add some padding for spacing */
+}
+.sidebar .nav-link {
+    color: white; /* Set the link color to white */
+}
+.nav-item{
+    color: aliceblue;
+}

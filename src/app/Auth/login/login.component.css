@@ -1,0 +1,31 @@
+body {
+    background-color: rgb(161, 168, 201);
+    width: 700px;
+    margin-left: 300px;
+    padding: 50px;
+    background-color: #eeebeb;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);  
+     
+  }
+  .navbar {
+    /* margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 50px;
+    margin-right: 50px; */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.8);
+
+  }
+  .nav-link{
+    color: #f1f1f1;
+    margin-left: 10px;
+  }
+  .row{
+    /* background-image: url();
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;  
+    height: 85vh; 
+    margin-top: 0; */
+  }

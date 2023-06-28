@@ -1,0 +1,28 @@
+<app-navbar></app-navbar>
+
+<h2>Task List</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Task ID</th>
+      <th>Task Name</th>
+      <th>User ID</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let task of tasks">
+      <td>{{ task.taskId }}</td>
+      <td>{{ task.taskName }}</td>
+      <td>{{ task.taskDescription }}</td>
+      <td>{{ task.userId }}</td>
+      <td>{{ task.status }}</td>
+      <td>
+        <button class="btn btn-sm btn-danger" (click)="updateTask(task)">Edit</button>
+        <button class="btn btn-sm btn-danger" (click)="deleteTask(task)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

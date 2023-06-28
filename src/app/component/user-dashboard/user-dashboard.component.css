@@ -1,0 +1,9 @@
+.navbar {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    box-shadow: 0 2px 4px rgba(71, 59, 143, 0.1);
+    background-color: rgba(77, 141, 194, 0.8);
+
+  }

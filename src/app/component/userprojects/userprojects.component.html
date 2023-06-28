@@ -1,0 +1,71 @@
+<app-navuser></app-navuser>>
+  
+    <div class="main">
+        <h1>ASSIGNED PROJECTS</h1>
+        <div class="row">
+          <div class="col-sm-6" *ngFor="let project of projects">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">{{ project.projectName }}</h5>
+                
+                <a routerLink="/usertasks" class="btn btn-primary">Tasks for {{ project.projectName }}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- <div class="row">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">project1</h5>
+              <p class="card-text">description</p>
+              
+              <a routerLink="/usertasks" class="btn btn-primary">tasks for project1</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">project 2</h5>
+              <p class="card-text">description</p>
+              <a href="#" class="btn btn-primary">tasks for project2</a>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+<!-- 
+    <div id="projectList" style="display: none;">
+        <ul id="projectNames"></ul>
+      </div>
+      
+      <script>
+        // Simulating data retrieval from the database
+        const projects = ['Project 1', 'Project 2', 'Project 3'];
+      
+        const projectsButton = document.getElementById('projectsButton');
+        const projectList = document.getElementById('projectList');
+        const projectNames = document.getElementById('projectNames');
+      
+        projectsButton.addEventListener('click', () => {
+          // Display the project list when the button is clicked
+          projectList.style.display = 'block';
+      
+          // Populate the project names
+          projects.forEach(project => {
+            const li = document.createElement('li');
+            li.textContent = project;
+            projectNames.appendChild(li);
+          });
+        });
+      </script>
+     -->
+    
+  
+    <!-- <ul>
+      <li *ngFor="let project of projects">{{project.projectName}}</li>
+    </ul>
+  </div> -->
