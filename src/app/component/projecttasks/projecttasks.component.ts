@@ -27,6 +27,8 @@ export class ProjecttasksComponent implements OnInit {
   tasks: Tasks[] = [];
   selectedTask: Tasks = new Tasks();
 
+  userNameList: string[] = [];
+
  
   visible: boolean = false;
   disp:string;
@@ -41,6 +43,7 @@ export class ProjecttasksComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.fetchStrings();
     this.route.paramMap.subscribe(params => {
       this.projectId = params.get('projectId')!;
       console.log(this.projectId);
@@ -93,17 +96,27 @@ export class ProjecttasksComponent implements OnInit {
 // }
 
 selectedTaskId: string; // Define a variable to store the selected Task ID
+selectedTaskName: string;
+selectedTaskDescription: string;
+selectedUserId:string;
+selectedProjectId:string;
+selectedStatus: string;
 
-openEditTaskModal(taskId: string): void {
+openEditTaskModal(taskId: string,taskName:string,taskDescription:string,userId:string,projectId:string,status:string): void {
   this.selectedTaskId = taskId; // Store the selected Task ID
+  this.selectedTaskName = taskName;
+  this.selectedTaskDescription = taskDescription;
+  this.selectedUserId=userId;
+  this.selectedProjectId=projectId;
+  this.selectedStatus=status
 }
 updateTask(){
   this.selectedTask.taskId=this.selectedTaskId;
-  this.selectedTask.taskDescription=this.taskDescription;
-  this.selectedTask.taskName=this.taskName;
-  this.selectedTask.userId=this.userId;
-  this.selectedTask.projectId=this.projectId;
-  this.selectedTask.status=this.status;
+  this.selectedTask.taskDescription=this.selectedTaskDescription;
+  this.selectedTask.taskName=this.selectedTaskName;
+  this.selectedTask.userId=this.selectedUserId;
+  this.selectedTask.projectId=this.selectedProjectId;
+  this.selectedTask.status=this.selectedStatus;
   this.taskService.updateTask(this.selectedTaskId,this.selectedTask)
   .subscribe(
     response => {
@@ -118,10 +131,22 @@ updateTask(){
   );
 }
 
+
+fetchStrings() {
+  this.taskService.fetchUserNameFromBackend().subscribe(
+    (response: string[]) => {
+      this.userNameList = response;
+      console.log(response);
+    },
+    (error) => {
+      console.error('Error fetching string list:', error);
+    }
+    );
+}
+
+
 editTask(task: Tasks) {
-
   this.selectedTask = task; 
-
 }
 
 // deleteTask(taskId: string): Observable<void> {

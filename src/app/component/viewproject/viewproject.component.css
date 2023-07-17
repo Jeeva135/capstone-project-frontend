@@ -1,0 +1,61 @@
+.container-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  
+.card {
+    flex: 0 0 calc(33.33% - 1rem); /* Adjust the width percentage as needed */
+    margin-bottom: 1rem;
+    margin-right: 40px;    
+}
+h2{
+  margin-bottom: 1rem;
+}
+
+.bg-grey {
+  background-color: rgb(80, 77, 84);
+}
+
+#editProjectModal .modal-dialog {
+  max-width: 500px;
+}
+
+#editProjectModal .modal-header {
+  background-color: #343a40;
+  color: #fff;
+}
+
+#editProjectModal .modal-title {
+  margin: 0;
+}
+
+#editProjectModal .form-group {
+  margin-bottom: 1rem;
+}
+
+#editProjectModal label {
+  font-weight: bold;
+}
+
+#editProjectModal .modal-footer {
+  background-color: #f8f9fa;
+}
+
+#editProjectModal .btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+#editProjectModal .btn-success {
+  background-color: #28a745;
+  color: #fff;
+}
+/* .container {
+  background-image: url("https://static.vecteezy.com/system/resources/previews/001/775/507/large_2x/abstract-technology-concept-background-vector.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+} */
+
+

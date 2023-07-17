@@ -1,0 +1,51 @@
+.container-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.card {
+  flex: 0 0 calc(33.33% - 1rem); /* Adjust the width percentage as needed */
+  margin-bottom: 1rem;
+  margin-right: 40px;    
+}
+h2{
+margin-bottom: 1rem;
+}
+
+
+#editTaskModal .modal-dialog {
+    max-width: 500px;
+  }
+  
+  #editTaskModal .modal-header {
+    background-color: #343a40;
+    color: #fff;
+  }
+  
+  #editTaskModal .modal-title {
+    margin: 0;
+  }
+  
+  #editTaskModal .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  #editTaskModal label {
+    font-weight: bold;
+  }
+  
+  #editTaskModal .modal-footer {
+    background-color: #f8f9fa;
+  }
+  
+  #editTaskModal .btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+  }
+  
+  #editTaskModal .btn-success {
+    background-color: #28a745;
+    color: #fff;
+  }
+  

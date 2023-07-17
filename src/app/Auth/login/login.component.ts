@@ -31,8 +31,11 @@ export class LoginComponent implements OnInit {
           this.ngOnInit();
         } else {
           console.log('Login successful');
+          
           // Store user details in local storage or perform any necessary actions
-          this.router.navigate(['/user']);
+          this.router.navigate(['/user'],{
+            queryParams: { ['username']: this.username }
+          });
         }
       },
       (err) => {

@@ -14,6 +14,8 @@ export class AddtasksComponent implements OnInit {
   addTaskGroup!: FormGroup ;
   proId:string | undefined;
 
+  userNameList: string[] = [];
+
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -23,11 +25,15 @@ export class AddtasksComponent implements OnInit {
 
   ngOnInit(): void {
     // Get the project ID from the route parameters
-    this.route.params.subscribe(params => {
-      this.projectId = params['projectId'];
-      this.proId=this.projectId;
-    });
+    // this.route.params.subscribe(params => {
+    //   this.projectId = params['projectId'];
+    //   this.proId=this.projectId;
+    // });
     //console.log(this.projectId);
+
+    this.fetchStrings();
+
+    
 
     
   this.route.queryParams.subscribe(params => {
@@ -44,6 +50,18 @@ export class AddtasksComponent implements OnInit {
     });
   }
 
+  fetchStrings() {
+    this.taskService.fetchUserNameFromBackend().subscribe(
+      (response: string[]) => {
+        this.userNameList = response;
+        console.log(response);
+      },
+      (error) => {
+        console.error('Error fetching string list:', error);
+      }
+      );
+  }
+
   onSubmit(): void {
     if (this.addTaskGroup.valid) {
       const task: Tasks = {
@@ -57,8 +75,9 @@ export class AddtasksComponent implements OnInit {
       };
 
       console.log(task);
+      console.log(this.userNameList);
       
-      console.log("projectis is:"+this.proId);
+      // console.log("projectis is:"+this.proId);
   
       this.taskService.saveTask(task).subscribe(() => {
         // Redirect to the project's task list page

@@ -6,8 +6,9 @@ body {
     background-color: #eeebeb;
     border-radius: 40px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);  
-     
+    background-image: none !important;
   }
+  
   .navbar {
     /* margin-top: 10px;
     margin-bottom: 20px;
@@ -17,10 +18,7 @@ body {
     background-color: rgba(0, 0, 0, 0.8);
 
   }
-  .nav-link{
-    color: #f1f1f1;
-    margin-left: 10px;
-  }
+  
   .row{
     /* background-image: url();
     background-repeat: no-repeat;

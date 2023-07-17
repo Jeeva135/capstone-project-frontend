@@ -1,9 +1,21 @@
 .navbar {
-    margin-top: 10px;
-    margin-bottom: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-    box-shadow: 0 2px 4px rgba(71, 59, 143, 0.1);
-    background-color: rgba(77, 141, 194, 0.8);
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  box-shadow: 0 2px 4px rgba(71, 59, 143, 0.1);
+  background-color: rgba(77, 141, 194, 0.8);
 
-  }
+}
+
+/* body.custom-container {
+  background-image: url('../../../assets/userwel.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 600px;
+} */
+h1{
+  color: aliceblue;
+
+}

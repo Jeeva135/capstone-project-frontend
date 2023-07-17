@@ -1,42 +1,26 @@
-<!-- <app-navbar></app-navbar>
-<div class="container mt-4">
-<h2>Task List<button class="btn btn-primary float-right mx-4" [routerLink]="['/addtasks']" [queryParams]="{ projectId: projectId }">Add Task</button>
-</h2>
-<div class="table-responsive">
-<table class="table table-bordered table-boxed">
-  <thead>
-    <tr>
-      <th>Task ID</th>
-      <th>Task Name</th>
-      <th>User ID</th>
-      <th>Status</th>
-      <th>Project ID</th>
-      <th>Description</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let task of tasks">
-      <td>{{ task.taskId }}</td>
-      <td>{{ task.taskName }}</td>
-      <td>{{ task.userId }}</td>
-      <td>{{ task.status }}</td>
-      <td>{{ projectId }}</td>
-      <td>{{ task.taskDescription }}</td>
-      <td>
-        <button class="btn btn-primary mx-1" (click)="updateTask(task)">Edit</button>
-        <button class="btn btn-danger mx-1" (click)="deleteTask(task)">Delete</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div> -->
-
-
-
 <app-navbar></app-navbar>
+
+
 <div class="container mt-4">
+  <h2>Task List<button class="btn btn-primary float-right mx-4" [routerLink]="['/addtasks']" [queryParams]="{ projectId: projectId}">Add Task</button></h2>
+  <div class="container-card">
+    <div *ngFor="let task of tasks">
+      <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+        <div class="card-header">Task Id: {{ task.taskId }}</div>
+        <div class="card-body">
+          <h5 class="card-title">Task Name: {{ task.taskName }}</h5>
+          <p class="card-text">Assigned To: {{ task.userId }}</p>
+          <p class="card-text">Status: {{ task.status }}</p>
+          <!-- <p class="card-text">Project Id: {{ projectId }}</p> -->
+          <p class="card-text">Task Description: {{ task.taskDescription }}</p>
+          <button class="btn btn-primary float-right mx-4" data-toggle="modal" data-target="#editTaskModal" (click)="openEditTaskModal(task.taskId,task.taskName,task.taskDescription,task.userId,task.projectId,task.status)">Edit</button>
+          <button class="btn btn-danger mx-1" (click)="deleteTask(task)">Delete</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- <div class="container mt-4">
   <h2>Task List<button class="btn btn-primary float-right mx-4" [routerLink]="['/addtasks']" [queryParams]="{ projectId: projectId }">Add Task</button>
   </h2>
   <div class="table-responsive">
@@ -68,7 +52,7 @@
     </tbody>
   </table>
 </div>
-</div>
+</div> -->
 
 <div class="modal fade" id="editTaskModal" tabindex="-1" role="dialog" aria-labelledby="editTaskModalLabel" aria-hidden="true">
 <div class="modal-dialog" role="document">
@@ -86,15 +70,18 @@
       </div>
       <div class="form-group">
         <label for="editTaskName">Task Name</label>
-        <input type="text" class="form-control" id="editTaskName" [(ngModel)]="taskName" placeholder="Enter Task Name" required>
+        <input type="text" class="form-control" id="editTaskName" [(ngModel)]="selectedTaskName" placeholder="Enter Task Name" required>
       </div>
       <div class="form-group">
-        <label for="editUserId">User ID</label>
-        <input type="text" class="form-control" id="editUserId" [(ngModel)]="userId" placeholder="Enter User ID" required>
+        <label for="editUserId">User Name</label>
+        <!-- <input type="text" class="form-control" id="editUserId" [(ngModel)]="selectedUserId" placeholder="Enter User ID" required> -->
+        <select class="form-control" id="editUserId" [(ngModel)]="selectedUserId" required>
+          <option *ngFor="let userName of userNameList" value="{{userName}}">{{userName}}</option>
+        </select>
       </div>
       <div class="form-group">
         <label for="editStatus">Status</label>
-        <select class="form-control" id="editStatus" [(ngModel)]="status" required>
+        <select class="form-control" id="editStatus" [(ngModel)]="selectedStatus" required>
           <option value="To-Do">To-Do</option>
           <option value="In Progress">In Progress</option>
           <option value="Review">Review</option>
@@ -105,7 +92,7 @@
         </div>
         <div class="form-group">
           <label for="editTaskDescription">Description</label>
-          <textarea class="form-control" id="taskDescription" [(ngModel)]="taskDescription" placeholder="Enter Description"></textarea>
+          <textarea class="form-control" id="taskDescription" [(ngModel)]="selectedTaskDescription" placeholder="Enter Description"></textarea>
         </div>
 
     </div>
@@ -118,139 +105,5 @@
 </div>
 
   
-
-<!-- </div> -->
-
-
-
-
-<!-- <div class="modal fade" id="editTaskModal" tabindex="-1" role="dialog" aria-labelledby="editTaskModalLabel" aria-hidden="true">
-<div class="modal-dialog" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title">Edit Task</h5>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <div class="form-group">
-        <label for="editTaskId">Task ID</label>
-        <input type="text" class="form-control" id="editTaskId" [(ngModel)]="selectedTask.taskId" placeholder="Enter Task ID" required>
-      </div>
-      <div class="form-group">
-        <label for="editTaskName">Task Name</label>
-        <input type="text" class="form-control" id="editTaskName" [(ngModel)]="selectedTask.taskName" placeholder="Enter Task Name" required>
-      </div>
-      <div class="form-group">
-        <label for="editUserId">User ID</label>
-        <input type="text" class="form-control" id="editUserId" [(ngModel)]="selectedTask.userId" placeholder="Enter User ID" required>
-      </div>
-      <div class="form-group">
-        <label for="editStatus">Status</label>
-        <select class="form-control" id="editStatus" [(ngModel)]="selectedTask.status" required>
-          <option value="To-Do">To-Do</option>
-          <option value="In Progress">In Progress</option>
-          <option value="Review">Review</option>
-          <option value="Completed">Completed</option>
-          <option value="Re-Opened">Re-Opened</option>
-        </select>
-      
-        </div>
-        <div class="form-group">
-          <label for="editTaskDescription">Description</label>
-          <textarea class="form-control" id="taskDescription" [(ngModel)]="taskDescription" placeholder="Enter Description"></textarea>
-        </div>
-
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-      <button class="btn btn-success" data-dismiss="modal" (click)="updateTask()">Add Task</button>
-
-     
-
-    </div>
-  </div>
-</div>
-</div> -->
-
-
-
-
-
-    <!-- <tbody>
-      <tr *ngFor="let task of tasks">
-        <td>{{ task.taskId }}</td>
-        <td>{{ task.taskName }}</td>
-        <td>{{ task.userId }}</td>
-        <td>{{ task.status }}</td>
-        <td>{{ projectId }}</td>
-        <td>{{ task.taskDescription }}</td>
-        <td>
-          <button class="btn btn-primary float-right mx-4" data-toggle="#editTaskModal" (click)="show(task.taskId)">Edit</button>
-          <button class="btn btn-danger mx-1" (click)="deleteTask(task)">Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-</div>
-
-
-
-
-<div class="modal fade" id="editTaskModal" tabindex="-1" role="dialog" aria-labelledby="editTaskModalLabel" aria-hidden="true">
-<div *ngIf="visible">
-  <div class="modal-dialog" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title">Edit Task</h5>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <div class="form-group">
-        <label for="editTaskId">Task ID</label>
-        <input type="text" class="form-control" id="editTaskId" [(ngModel)]="taskId" placeholder="{{taskId}}" required>
-        <p>{{disp}}</p>
-      </div>
-      <div class="form-group">
-        <label for="editTaskName">Task Name</label>
-        <input type="text" class="form-control" id="editTaskName" [(ngModel)]="taskName" placeholder="Enter Task Name" required>
-      </div>
-      <div class="form-group">
-        <label for="editUserId">User ID</label>
-        <input type="text" class="form-control" id="editUserId" [(ngModel)]="userId" placeholder="Enter User ID" required>
-      </div>
-      <div class="form-group">
-        <label for="editStatus">Status</label>
-        <select class="form-control" id="editStatus" [(ngModel)]="status" required>
-          <option value="To-Do">To-Do</option>
-          <option value="In Progress">In Progress</option>
-          <option value="Review">Review</option>
-          <option value="Completed">Completed</option>
-          <option value="Re-Opened">Re-Opened</option>
-        </select>
-      
-        </div>
-        <div class="form-group">
-          <label for="editTaskDescription">Description</label>
-          <textarea class="form-control" id="taskDescription" [(ngModel)]="taskDescription" placeholder="Enter Description"></textarea>
-        </div>
-
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-      <button class="btn btn-success" data-dismiss="modal" (click)="updateTask()">Add Task</button>
-
-     
-
-    </div>
-  </div>
-</div>
-</div> -->
-
-
 
 

@@ -1,9 +1,14 @@
 .navbar {
-    margin-top: 10px;
+    /* margin-top: 10px;
     margin-bottom: 20px;
     margin-left: 20px;
-    margin-right: 20px;
+    margin-right: 20px; */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     background-color: rgba(0, 0, 0, 0.8);
-
   }
+  .container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  

@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 
-<div class="container mt-4">
+<!-- <div class="container mt-4">
   <h2>View Projects</h2>
   <div class="table-responsive">
     <table class="table table-bordered table-boxed">
@@ -13,7 +13,7 @@
         </tr>
       </thead>
       <tbody>
-        <!-- Iterate over projects array and display project details -->
+        
         <tr *ngFor="let project of projects">
           <td>{{ project.projectId }}</td>
           <td>{{ project.projectName }}</td>
@@ -21,13 +21,31 @@
           <td>
             <button class="btn btn-sm btn-primary mr-1" (click)="viewTasks(project.projectId)">View Tasks</button>
             <button class="btn btn-primary float-right mx-4" data-toggle="modal" data-target="#editProjectModal" (click)="openEditProjectModal(project.projectId)">Edit</button>
-            <!-- <button class="btn btn-sm btn-primary mx-1" (click)="updateProject(project)">Edit</button> -->
             <button class="btn btn-sm btn-danger mx-1" (click)="deleteProject(project)">Delete</button>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
+</div> -->
+
+
+<div class="container">
+  <h2>View Projects</h2>
+    <div class="container-card">
+    <div *ngFor="let project of projects">
+      <div class="card text-white bg-grey mb-3" style="max-width: 18rem;">
+        <div class="card-header">Project Id:{{ project.projectId }}</div>
+        <div class="card-body">
+          <h5 class="card-title">{{ project.projectName }}</h5>
+          <p class="card-text">{{ project.projectDescription }}</p>
+          <button class="btn btn-sm btn-primary mr-1" (click)="viewTasks(project.projectId)">View Tasks</button>
+          <button class="btn btn-sm btn-primary mx-1" data-toggle="modal" data-target="#editProjectModal" (click)="openEditProjectModal(project.projectId,project.projectName,project.projectDescription)">Edit</button>
+          <button class="btn btn-sm btn-danger mx-1" (click)="deleteProject(project)">Delete</button>
+        </div>
+      </div>
+  </div>
+</div>
 </div>
 
 
@@ -48,11 +66,11 @@
         </div>
         <div class="form-group">
           <label for="editProjectName">Project Name</label>
-          <input type="text" class="form-control" id="editProjectName" [(ngModel)]="projectName" placeholder="Enter Project Name" required>
+          <input type="text" class="form-control" id="editProjectName" [(ngModel)]="selectedProjectName" placeholder="Enter Project Name" required>
         </div>
         <div class="form-group">
           <label for="editProjectDescription">Description</label>
-          <textarea class="form-control" id="projectDescription" [(ngModel)]="projectDescription" placeholder="Enter Description"></textarea>
+          <textarea class="form-control" id="projectDescription" [(ngModel)]="selectedProjectDescription" placeholder="Enter Description"></textarea>
         </div>
       </div>
       <div class="modal-footer">

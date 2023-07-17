@@ -1,5 +1,41 @@
+<body class="custom-container">
+  <div class="col-lg-12">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark custom-navbar justify-content-center">
+      <div class="container px-5">
+        <a class="navbar-brand" routerLink="/">ProjectSphere</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <div class="d-flex align-items-center">
+                <a class="nav-link active" aria-current="page" routerLink="/">HOME</a>
+                <button class="btn btn-outline-success mx-2" (click)="logout()">Logout</button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+  
+  <br>
+  <br>
+  
+  <h1 class="display-1 text-center" style="font-weight: bold; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Welcome User!!</h1>
 
-<div class="container-fluid">
+  <br>
+  <br>
+  
+  <div class="d-flex justify-content-center">
+    <button id="projectsButton" class="btn btn-primary btn-lg" (click)="tasks()">Tasks for You</button>
+  </div>
+</body>
+
+
+<!-- <div class="container-fluid">
     <div class="row">
       <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
@@ -25,7 +61,7 @@
   <br>
   <div class="d-flex justify-content-center">
     <button id="projectsButton" class="btn btn-primary btn-lg" (click)="projects()">Projects</button>
-  </div>
+  </div> -->
   
   
   

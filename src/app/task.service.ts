@@ -9,7 +9,7 @@ import { Tasks } from './model/tasks';
 export class TaskService {
 
   private apiUri = 'http://localhost:8300/api/v1/task';
-  //private apiUrl = 'http://localhost:3000';
+  private apiUrl = 'http://localhost:8080/auth/getusers';
 
   constructor(private http: HttpClient) { }
  
@@ -35,5 +35,19 @@ export class TaskService {
 
   viewComment(taskId:string): Observable<any>{
     return this.http.get<string>(`http://localhost:8200/api/v1/comment/viewcomment/{taskId}`);
+  }
+
+  fetchUserNameFromBackend(): Observable<string[]> {
+    return this.http.get<string[]>(this.apiUrl);
+  }
+
+  getTasksByUserId(userId: string): Observable<Tasks[]> {
+    const url = `${this.apiUri}/getbyuserid/${userId}`;
+    return this.http.get<Tasks[]>(url);
+  }
+
+  updateStatus(taskId:string,status:string): Observable<any>{
+    const url = `${this.apiUri}/userupdatestatus/${taskId}`;
+    return this.http.put(url,status);
   }
 }

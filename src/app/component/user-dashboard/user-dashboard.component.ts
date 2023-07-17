@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { Tasks } from 'src/app/model/tasks';
+import { TaskService } from 'src/app/task.service';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -7,16 +10,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-dashboard.component.css']
 })
 export class UserDashboardComponent {
-  constructor(private route : Router){}
+  username: string;
+
+  constructor(private route : Router,private rout : ActivatedRoute,private taskService: TaskService){}
    ngOnInit(): void {
-       
+      this.rout.queryParams.subscribe(params => {
+      this.username = params['username'];
+    });
    }
    logout(){
     localStorage.removeItem("token");
     this.route.navigate(['/login']);
    }
-   projects() {
-    this.route.navigate(['/userprojects']); 
+   tasks() {
+    this.route.navigate(['/usertasks'],{
+          queryParams: { ['username']: this.username }
+          }); 
   }
 
 }

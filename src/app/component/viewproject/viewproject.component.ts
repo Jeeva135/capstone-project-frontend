@@ -19,6 +19,8 @@ export class ViewprojectComponent implements OnInit {
   projects: Projects[] = [];
 
   selectedProjectId: string;
+  selectedProjectName: string;
+  selectedProjectDescription: string;
   
   constructor(private adminService: AdminserviceService,
               private router: Router,
@@ -52,14 +54,16 @@ export class ViewprojectComponent implements OnInit {
     );
   }
 
-  openEditProjectModal(projectId: string): void {
+  openEditProjectModal(projectId: string,projectName: string,projectDescription: string): void {
     this.selectedProjectId = projectId; // Store the selected Project ID
+    this.selectedProjectName = projectName;
+    this.selectedProjectDescription = projectDescription;
   }
 
   updateProject(){
     this.selectedProject.projectId=this.selectedProjectId;
-    this.selectedProject.projectDescription=this.projectDescription;
-    this.selectedProject.projectName=this.projectName;
+    this.selectedProject.projectDescription=this.selectedProjectDescription;
+    this.selectedProject.projectName=this.selectedProjectName;
     this.adminService.updateProject(this.selectedProjectId,this.selectedProject)
     .subscribe(
       response => {
